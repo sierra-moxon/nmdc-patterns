@@ -1,0 +1,23 @@
+type Activity
+  {
+    id: Uriorcurie!
+    name: String
+    description: String
+    primaryEmail: String
+    birthDate: Date
+    ageInYears: Integer
+    vitalStatus: PersonStatus
+  }
+
+type ActivityCollection
+  {
+    entries: [Activity]
+  }
+
+type NamedThing
+  {
+    id: Uriorcurie!
+    name: String
+    description: String
+  }
+
