@@ -1,11 +1,11 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix dcterms: <http://purl.org/dc/terms/> .
 @prefix linkml: <https://w3id.org/linkml/> .
 @prefix nmdc_patterns: <https://w3id.org/sierra-moxon/nmdc-patterns/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix schema1: <http://schema.org/> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
@@ -13,125 +13,42 @@ nmdc_patterns:ActivityCollection a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "ActivityCollection" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom nmdc_patterns:Activity ;
+            owl:minCardinality 0 ;
             owl:onProperty nmdc_patterns:entries ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
+            owl:allValuesFrom nmdc_patterns:Activity ;
             owl:onProperty nmdc_patterns:entries ] ;
     skos:definition "A holder for Activity objects" ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
-nmdc_patterns:Activity a owl:Class,
+nmdc_patterns:OmicsProcessing a owl:Class,
         linkml:ClassDefinition ;
-    rdfs:label "Activity" ;
+    rdfs:label "OmicsProcessing" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:birth_date ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom [ a rdfs:Datatype ;
-                    owl:onDatatype xsd:string ;
-                    owl:withRestrictions ( [ xsd:pattern "^\\S+@[\\S+\\.]+\\S+" ] ) ] ;
-            owl:onProperty nmdc_patterns:primary_email ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom nmdc_patterns:PersonStatus ;
-            owl:onProperty nmdc_patterns:vital_status ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:primary_email ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:birth_date ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:age_in_years ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:primary_email ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Integer ;
-            owl:onProperty nmdc_patterns:age_in_years ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:age_in_years ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:vital_status ],
-        [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:vital_status ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Date ;
-            owl:onProperty nmdc_patterns:birth_date ],
-        nmdc_patterns:NamedThing ;
-    skos:definition "Represents a Activity" ;
-    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
-
-nmdc_patterns:NamedThing a owl:Class,
-        linkml:ClassDefinition ;
-    rdfs:label "NamedThing" ;
-    rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:name ],
+            owl:allValuesFrom linkml:String ;
+            owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 0 ;
-            owl:onProperty nmdc_patterns:description ],
-        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        nmdc_patterns:PlannedProcess ;
+    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
+
+nmdc_patterns:WorkflowExecutionActivity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "WorkflowExecutionActivity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc_patterns:name ],
+            owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:name ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:Uriorcurie ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
-        [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
-            owl:onProperty nmdc_patterns:description ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:description ] ;
-    skos:definition "A generic grouping for any identifiable entity" ;
-    skos:exactMatch schema1:Thing ;
-    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
-
-PATO:0001421 a owl:Class,
-        nmdc_patterns:PersonStatus ;
-    rdfs:label "ALIVE" ;
-    rdfs:subClassOf nmdc_patterns:PersonStatus .
-
-PATO:0001422 a owl:Class,
-        nmdc_patterns:PersonStatus ;
-    rdfs:label "DEAD" ;
-    rdfs:subClassOf nmdc_patterns:PersonStatus .
-
-<https://w3id.org/sierra-moxon/nmdc-patterns/PersonStatus#UNKNOWN> a owl:Class,
-        nmdc_patterns:PersonStatus ;
-    rdfs:label "UNKNOWN" ;
-    rdfs:subClassOf nmdc_patterns:PersonStatus .
-
-nmdc_patterns:entries a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "entries" ;
-    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
-
-nmdc_patterns:age_in_years a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "age_in_years" ;
-    rdfs:range linkml:Integer ;
-    skos:definition "Number of years since birth" ;
-    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
-
-nmdc_patterns:birth_date a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "birth_date" ;
-    rdfs:range linkml:Date ;
-    skos:definition "Date on which a person is born" ;
+        nmdc_patterns:Activity ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
 nmdc_patterns:description a owl:ObjectProperty,
@@ -140,38 +57,77 @@ nmdc_patterns:description a owl:ObjectProperty,
     skos:definition "A human-readable description for a thing" ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
-nmdc_patterns:id a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "id" ;
-    rdfs:range linkml:Uriorcurie ;
-    skos:definition "A unique identifier for a thing" ;
-    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
-
 nmdc_patterns:name a owl:ObjectProperty,
         linkml:SlotDefinition ;
     rdfs:label "name" ;
     skos:definition "A human-readable name for a thing" ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
-nmdc_patterns:primary_email a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "primary_email" ;
-    skos:definition "The main email address of a person" ;
+nmdc_patterns:NamedThing a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "NamedThing" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Uriorcurie [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ] ;
+    skos:definition "a databased entity or concept/class" ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
-nmdc_patterns:vital_status a owl:ObjectProperty,
-        linkml:SlotDefinition ;
-    rdfs:label "vital_status" ;
-    rdfs:range nmdc_patterns:PersonStatus ;
-    skos:definition "living or dead status" ;
+nmdc_patterns:PlannedProcess a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "PlannedProcess" ;
+    rdfs:subClassOf nmdc_patterns:NamedThing ;
+    skos:exactMatch OBI:0000011 ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 
-nmdc_patterns:PersonStatus a owl:Class,
-        linkml:EnumDefinition ;
-    owl:unionOf ( PATO:0001421 PATO:0001422 <https://w3id.org/sierra-moxon/nmdc-patterns/PersonStatus#UNKNOWN> ) ;
-    linkml:permissible_values PATO:0001421,
-        PATO:0001422,
-        <https://w3id.org/sierra-moxon/nmdc-patterns/PersonStatus#UNKNOWN> .
+nmdc_patterns:entries a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "entries" ;
+    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
+
+nmdc_patterns:was_informed_by a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "was_informed_by" ;
+    rdfs:domain nmdc_patterns:Activity ;
+    rdfs:range nmdc_patterns:Activity ;
+    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> ;
+    skos:mappingRelation prov:wasInformedBy .
+
+nmdc_patterns:Activity a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "Activity" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom nmdc_patterns:Activity ;
+            owl:onProperty nmdc_patterns:was_informed_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 0 ;
+            owl:onProperty nmdc_patterns:was_informed_by ],
+        [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc_patterns:was_informed_by ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:intersectionOf ( linkml:Uriorcurie [ a rdfs:Datatype ;
+                                owl:onDatatype xsd:string ;
+                                owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
+            owl:onProperty nmdc_patterns:id ] ;
+    skos:definition "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." ;
+    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> ;
+    skos:mappingRelation prov:Activity .
 
 <https://w3id.org/sierra-moxon/nmdc-patterns> a owl:Ontology ;
     rdfs:label "nmdc-patterns" ;
@@ -179,4 +135,18 @@ nmdc_patterns:PersonStatus a owl:Class,
     dcterms:title "nmdc-patterns" ;
     rdfs:seeAlso <https://sierra-moxon.github.io/nmdc-patterns> ;
     skos:definition "test pattern validation in nmdc" .
+
+nmdc_patterns:id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "id" ;
+    rdfs:range [ a rdfs:Datatype ;
+            owl:intersectionOf ( linkml:Uriorcurie [ a rdfs:Datatype ;
+                        owl:onDatatype xsd:string ;
+                        owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
+    skos:definition "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
+    skos:editorialNote "a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted",
+        "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?",
+        "minting authority shoulders should probably be enumerated and checked in the pattern",
+        "typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions" ;
+    skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
 

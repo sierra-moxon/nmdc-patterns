@@ -1,29 +1,19 @@
-@prefix PATO: <http://purl.obolibrary.org/obo/PATO_> .
+@prefix OBI: <http://purl.obolibrary.org/obo/OBI_> .
 @prefix nmdc_patterns: <https://w3id.org/sierra-moxon/nmdc-patterns/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema1: <http://schema.org/> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-schema1:Thing a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "A generic grouping for any identifiable entity" ;
+OBI:0000011 a sh:NodeShape ;
+    sh:closed false ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:description "A unique identifier for a thing" ;
+    sh:property [ sh:description "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
             sh:order 0 ;
-            sh:path schema1:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 1 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path schema1:description ] ;
-    sh:targetClass schema1:Thing .
+            sh:path nmdc_patterns:id ;
+            sh:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ;
+    sh:targetClass OBI:0000011 .
 
 nmdc_patterns:ActivityCollection a sh:NodeShape ;
     sh:closed true ;
@@ -35,45 +25,59 @@ nmdc_patterns:ActivityCollection a sh:NodeShape ;
             sh:path nmdc_patterns:entries ] ;
     sh:targetClass nmdc_patterns:ActivityCollection .
 
-nmdc_patterns:Activity a sh:NodeShape ;
-    sh:closed true ;
-    sh:description "Represents a Activity" ;
+nmdc_patterns:NamedThing a sh:NodeShape ;
+    sh:closed false ;
+    sh:description "a databased entity or concept/class" ;
     sh:ignoredProperties ( rdf:type ) ;
-    sh:property [ sh:datatype xsd:string ;
-            sh:description "A human-readable name for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 5 ;
-            sh:path schema1:name ],
-        [ sh:datatype xsd:string ;
-            sh:description "A human-readable description for a thing" ;
-            sh:maxCount 1 ;
-            sh:order 6 ;
-            sh:path schema1:description ],
-        [ sh:description "A unique identifier for a thing" ;
+    sh:property [ sh:description "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
             sh:maxCount 1 ;
             sh:minCount 1 ;
-            sh:order 4 ;
-            sh:path schema1:identifier ],
-        [ sh:datatype xsd:string ;
-            sh:description "The main email address of a person" ;
-            sh:maxCount 1 ;
             sh:order 0 ;
-            sh:path schema1:email ;
-            sh:pattern "^\\S+@[\\S+\\.]+\\S+" ],
-        [ sh:datatype xsd:integer ;
-            sh:description "Number of years since birth" ;
+            sh:path nmdc_patterns:id ;
+            sh:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ;
+    sh:targetClass nmdc_patterns:NamedThing .
+
+nmdc_patterns:OmicsProcessing a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
             sh:maxCount 1 ;
-            sh:order 2 ;
-            sh:path nmdc_patterns:age_in_years ],
-        [ sh:datatype xsd:date ;
-            sh:description "Date on which a person is born" ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path nmdc_patterns:id ;
+            sh:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ;
+    sh:targetClass nmdc_patterns:OmicsProcessing .
+
+nmdc_patterns:WorkflowExecutionActivity a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:description "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
             sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path nmdc_patterns:id ;
+            sh:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ],
+        [ sh:class nmdc_patterns:Activity ;
+            sh:maxCount 1 ;
+            sh:nodeKind sh:IRI ;
             sh:order 1 ;
-            sh:path schema1:birthDate ],
-        [ sh:description "living or dead status" ;
-            sh:in ( PATO:0001421 PATO:0001422 "UNKNOWN" ) ;
+            sh:path nmdc_patterns:was_informed_by ] ;
+    sh:targetClass nmdc_patterns:WorkflowExecutionActivity .
+
+nmdc_patterns:Activity a sh:NodeShape ;
+    sh:closed true ;
+    sh:description "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:class nmdc_patterns:Activity ;
             sh:maxCount 1 ;
-            sh:order 3 ;
-            sh:path nmdc_patterns:vital_status ] ;
+            sh:nodeKind sh:IRI ;
+            sh:order 1 ;
+            sh:path nmdc_patterns:was_informed_by ],
+        [ sh:description "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI" ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:order 0 ;
+            sh:path nmdc_patterns:id ;
+            sh:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ;
     sh:targetClass nmdc_patterns:Activity .
 

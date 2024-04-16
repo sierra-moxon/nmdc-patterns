@@ -34,6 +34,18 @@
     {
       "prefix_prefix": "example",
       "prefix_reference": "https://example.org/"
+    },
+    {
+      "prefix_prefix": "prov",
+      "prefix_reference": "http://www.w3.org/ns/prov#"
+    },
+    {
+      "prefix_prefix": "OBI",
+      "prefix_reference": "http://purl.obolibrary.org/obo/OBI_"
+    },
+    {
+      "prefix_prefix": "dc",
+      "prefix_reference": "http://purl.org/dc/elements/1.1/"
     }
   ],
   "default_prefix": "nmdc_patterns",
@@ -348,49 +360,35 @@
       "@type": "TypeDefinition"
     }
   ],
-  "enums": [
-    {
-      "name": "PersonStatus",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/PersonStatus",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "permissible_values": [
-        {
-          "text": "ALIVE",
-          "description": "the person is living",
-          "meaning": "PATO:0001421"
-        },
-        {
-          "text": "DEAD",
-          "description": "the person is deceased",
-          "meaning": "PATO:0001422"
-        },
-        {
-          "text": "UNKNOWN",
-          "description": "the vital status is not known",
-          "todos": [
-            "map this to an ontology"
-          ]
-        }
-      ]
-    }
-  ],
   "slots": [
     {
       "name": "id",
       "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
-      "description": "A unique identifier for a thing",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "mappings": [
-        "http://schema.org/identifier"
+      "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+      "notes": [
+        "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?",
+        "a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted",
+        "typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions",
+        "minting authority shoulders should probably be enumerated and checked in the pattern"
       ],
-      "slot_uri": "http://schema.org/identifier",
+      "examples": [
+        {
+          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
       "identifier": true,
       "owner": "NamedThing",
       "domain_of": [
+        "Activity",
         "NamedThing"
       ],
       "range": "uriorcurie",
       "required": true,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
       "@type": "SlotDefinition"
     },
     {
@@ -402,10 +400,6 @@
         "http://schema.org/name"
       ],
       "slot_uri": "http://schema.org/name",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
@@ -418,69 +412,23 @@
         "http://schema.org/description"
       ],
       "slot_uri": "http://schema.org/description",
-      "owner": "NamedThing",
-      "domain_of": [
-        "NamedThing"
-      ],
       "range": "string",
       "@type": "SlotDefinition"
     },
     {
-      "name": "primary_email",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/primary_email",
-      "description": "The main email address of a person",
+      "name": "was_informed_by",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/was_informed_by",
       "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
       "mappings": [
-        "http://schema.org/email"
+        "http://www.w3.org/ns/prov#wasInformedBy"
       ],
-      "slot_uri": "http://schema.org/email",
+      "domain": "Activity",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/was_informed_by",
       "owner": "Activity",
       "domain_of": [
         "Activity"
       ],
-      "range": "string",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "birth_date",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/birth_date",
-      "description": "Date on which a person is born",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "mappings": [
-        "http://schema.org/birthDate"
-      ],
-      "slot_uri": "http://schema.org/birthDate",
-      "owner": "Activity",
-      "domain_of": [
-        "Activity"
-      ],
-      "range": "date",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "age_in_years",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/age_in_years",
-      "description": "Number of years since birth",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/age_in_years",
-      "owner": "Activity",
-      "domain_of": [
-        "Activity"
-      ],
-      "range": "integer",
-      "@type": "SlotDefinition"
-    },
-    {
-      "name": "vital_status",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/vital_status",
-      "description": "living or dead status",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/vital_status",
-      "owner": "Activity",
-      "domain_of": [
-        "Activity"
-      ],
-      "range": "PersonStatus",
+      "range": "Activity",
       "@type": "SlotDefinition"
     },
     {
@@ -498,65 +446,124 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "Activity_primary_email",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/primary_email",
-      "description": "The main email address of a person",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "mappings": [
-        "http://schema.org/email"
+      "name": "WorkflowExecutionActivity_id",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+      "notes": [
+        "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?",
+        "a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted",
+        "typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions",
+        "minting authority shoulders should probably be enumerated and checked in the pattern"
       ],
-      "is_a": "primary_email",
+      "examples": [
+        {
+          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "is_a": "id",
+      "domain": "WorkflowExecutionActivity",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "WorkflowExecutionActivity",
+      "domain_of": [
+        "WorkflowExecutionActivity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+        "interpolated": true,
+        "@type": "PatternExpression"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Activity_id",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+      "notes": [
+        "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?",
+        "a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted",
+        "typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions",
+        "minting authority shoulders should probably be enumerated and checked in the pattern"
+      ],
+      "examples": [
+        {
+          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "is_a": "id",
       "domain": "Activity",
-      "slot_uri": "http://schema.org/email",
-      "alias": "primary_email",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "identifier": true,
+      "alias": "id",
       "owner": "Activity",
       "domain_of": [
         "Activity"
       ],
       "is_usage_slot": true,
-      "usage_slot_name": "primary_email",
-      "range": "string",
-      "pattern": "^\\S+@[\\S+\\.]+\\S+",
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+        "interpolated": true,
+        "@type": "PatternExpression"
+      },
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "OmicsProcessing_id",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+      "notes": [
+        "abstracted pattern: prefix:typecode-authshoulder-blade(.version)?(_seqsuffix)?",
+        "a minimum length of 3 characters is suggested for typecodes, but 1 or 2 characters will be accepted",
+        "typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions",
+        "minting authority shoulders should probably be enumerated and checked in the pattern"
+      ],
+      "examples": [
+        {
+          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
+          "@type": "Example"
+        }
+      ],
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "is_a": "id",
+      "domain": "OmicsProcessing",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/id",
+      "identifier": true,
+      "alias": "id",
+      "owner": "OmicsProcessing",
+      "domain_of": [
+        "OmicsProcessing"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "id",
+      "range": "uriorcurie",
+      "required": true,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+      "structured_pattern": {
+        "syntax": "{id_nmdc_prefix}:omprc-{id_shoulder}-{id_blade}{id_version}{id_locus}",
+        "interpolated": true,
+        "@type": "PatternExpression"
+      },
       "@type": "SlotDefinition"
     }
   ],
   "classes": [
-    {
-      "name": "NamedThing",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/NamedThing",
-      "description": "A generic grouping for any identifiable entity",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "mappings": [
-        "schema:Thing"
-      ],
-      "slots": [
-        "id",
-        "name",
-        "description"
-      ],
-      "slot_usage": {},
-      "class_uri": "http://schema.org/Thing",
-      "@type": "ClassDefinition"
-    },
-    {
-      "name": "Activity",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/Activity",
-      "description": "Represents a Activity",
-      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
-      "is_a": "NamedThing",
-      "slots": [
-        "id",
-        "name",
-        "description",
-        "Activity_primary_email",
-        "birth_date",
-        "age_in_years",
-        "vital_status"
-      ],
-      "slot_usage": {},
-      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/Activity",
-      "@type": "ClassDefinition"
-    },
     {
       "name": "ActivityCollection",
       "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/ActivityCollection",
@@ -578,13 +585,105 @@
       "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/ActivityCollection",
       "tree_root": true,
       "@type": "ClassDefinition"
+    },
+    {
+      "name": "WorkflowExecutionActivity",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/WorkflowExecutionActivity",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "is_a": "Activity",
+      "slots": [
+        "was_informed_by",
+        "WorkflowExecutionActivity_id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/WorkflowExecutionActivity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "Activity",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/Activity",
+      "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "mappings": [
+        "prov:Activity"
+      ],
+      "slots": [
+        "Activity_id",
+        "was_informed_by"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/Activity",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "OmicsProcessing",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/OmicsProcessing",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "is_a": "PlannedProcess",
+      "slots": [
+        "OmicsProcessing_id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/OmicsProcessing",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "PlannedProcess",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/PlannedProcess",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "mappings": [
+        "OBI:0000011"
+      ],
+      "is_a": "NamedThing",
+      "abstract": true,
+      "slots": [
+        "id"
+      ],
+      "slot_usage": {},
+      "class_uri": "http://purl.obolibrary.org/obo/OBI_0000011",
+      "@type": "ClassDefinition"
+    },
+    {
+      "name": "NamedThing",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/NamedThing",
+      "description": "a databased entity or concept/class",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "abstract": true,
+      "slots": [
+        "id"
+      ],
+      "slot_usage": {},
+      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/NamedThing",
+      "@type": "ClassDefinition"
     }
   ],
   "metamodel_version": "1.7.0",
   "source_file": "nmdc_patterns.yaml",
-  "source_file_date": "2024-04-16T16:26:50",
-  "source_file_size": 2210,
-  "generation_date": "2024-04-16T16:29:37",
+  "source_file_date": "2024-04-16T16:35:38",
+  "source_file_size": 3432,
+  "generation_date": "2024-04-16T16:35:40",
+  "settings": [
+    {
+      "setting_key": "id_nmdc_prefix",
+      "setting_value": "^(nmdc)"
+    },
+    {
+      "setting_key": "id_shoulder",
+      "setting_value": "([0-9][a-z]{0,6}[0-9])"
+    },
+    {
+      "setting_key": "id_blade",
+      "setting_value": "([A-Za-z0-9]{1,})"
+    },
+    {
+      "setting_key": "id_version",
+      "setting_value": "(\\.[A-Za-z0-9]{1,})*"
+    },
+    {
+      "setting_key": "id_locus",
+      "setting_value": "(_[A-Za-z0-9_\\.-]+)?$"
+    }
+  ],
   "@type": "SchemaDefinition",
   "@context": [
     "project/jsonld/nmdc_patterns.context.jsonld",

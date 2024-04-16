@@ -1,12 +1,7 @@
 type Activity
   {
     id: Uriorcurie!
-    name: String
-    description: String
-    primaryEmail: String
-    birthDate: Date
-    ageInYears: Integer
-    vitalStatus: PersonStatus
+    wasInformedBy: Activity
   }
 
 type ActivityCollection
@@ -14,10 +9,24 @@ type ActivityCollection
     entries: [Activity]
   }
 
-type NamedThing
+interface NamedThing
   {
     id: Uriorcurie!
-    name: String
-    description: String
+  }
+
+type OmicsProcessing
+  {
+    id: Uriorcurie!
+  }
+
+interface PlannedProcess
+  {
+    id: Uriorcurie!
+  }
+
+type WorkflowExecutionActivity
+  {
+    wasInformedBy: Activity
+    id: Uriorcurie!
   }
 

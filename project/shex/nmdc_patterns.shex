@@ -2,7 +2,6 @@ BASE <https://w3id.org/sierra-moxon/nmdc-patterns/>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
 PREFIX linkml: <https://w3id.org/linkml/>
-PREFIX schema1: <http://schema.org/>
 
 
 linkml:String xsd:string
@@ -43,18 +42,13 @@ linkml:Jsonpath xsd:string
 
 linkml:Sparqlpath xsd:string
 
-<Activity> CLOSED {
-    (  $<Activity_tes> (  &<NamedThing_tes> ;
-          rdf:type [ schema1:Thing ] ? ;
-          schema1:email @linkml:String ? ;
-          schema1:birthDate @linkml:Date ? ;
-          <age_in_years> @linkml:Integer ? ;
-          <vital_status> [ <http://purl.obolibrary.org/obo/PATO_0001421> <http://purl.obolibrary.org/obo/PATO_0001422>
-             <https://w3id.org/sierra-moxon/nmdc-patterns/PersonStatus#UNKNOWN> ] ?
-       ) ;
-       rdf:type [ <Activity> ]
-    )
-}
+<Activity>  (
+    CLOSED {
+       (  $<Activity_tes> <was_informed_by> @<Activity> ? ;
+          rdf:type [ <Activity> ]
+       )
+    } OR @<WorkflowExecutionActivity>
+)
 
 <ActivityCollection> CLOSED {
     (  $<ActivityCollection_tes> <entries> @<Activity> * ;
@@ -63,13 +57,37 @@ linkml:Sparqlpath xsd:string
 }
 
 <NamedThing>  (
-    CLOSED {
-       (  $<NamedThing_tes> (  schema1:name @linkml:String ? ;
-             schema1:description @linkml:String ?
-          ) ;
-          rdf:type [ schema1:Thing ]
+    {
+       (  $<NamedThing_tes> rdf:type . * ;
+          rdf:type [ <NamedThing> ]
        )
-    } OR @<Activity>
+    } OR @<PlannedProcess>
 )
+
+<OmicsProcessing> CLOSED {
+    (  $<OmicsProcessing_tes> (  &<PlannedProcess_tes> ;
+          rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000011> ] ?
+       ) ;
+       rdf:type [ <OmicsProcessing> ]
+    )
+}
+
+<PlannedProcess>  (
+    {
+       (  $<PlannedProcess_tes> (  &<NamedThing_tes> ;
+             rdf:type [ <NamedThing> ] ?
+          ) ;
+          rdf:type [ <http://purl.obolibrary.org/obo/OBI_0000011> ]
+       )
+    } OR @<OmicsProcessing>
+)
+
+<WorkflowExecutionActivity> CLOSED {
+    (  $<WorkflowExecutionActivity_tes> (  &<Activity_tes> ;
+          rdf:type [ <Activity> ] ?
+       ) ;
+       rdf:type [ <WorkflowExecutionActivity> ]
+    )
+}
 
 

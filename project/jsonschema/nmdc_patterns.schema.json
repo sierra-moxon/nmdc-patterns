@@ -2,37 +2,15 @@
     "$defs": {
         "Activity": {
             "additionalProperties": false,
-            "description": "Represents a Activity",
+            "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
                 "id": {
-                    "description": "A unique identifier for a thing",
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "was_informed_by": {
                     "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
                 }
             },
             "required": [
@@ -52,6 +30,9 @@
                                 "$ref": "#/$defs/Activity__identifier_optional"
                             },
                             {
+                                "type": "string"
+                            },
+                            {
                                 "type": "null"
                             }
                         ]
@@ -64,75 +45,55 @@
         },
         "Activity__identifier_optional": {
             "additionalProperties": false,
-            "description": "Represents a Activity",
+            "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
             "properties": {
-                "age_in_years": {
-                    "description": "Number of years since birth",
-                    "type": "integer"
-                },
-                "birth_date": {
-                    "description": "Date on which a person is born",
-                    "format": "date",
-                    "type": "string"
-                },
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
                 "id": {
-                    "description": "A unique identifier for a thing",
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                "was_informed_by": {
                     "type": "string"
-                },
-                "primary_email": {
-                    "description": "The main email address of a person",
-                    "pattern": "^\\S+@[\\S+\\.]+\\S+",
-                    "type": "string"
-                },
-                "vital_status": {
-                    "$ref": "#/$defs/PersonStatus",
-                    "description": "living or dead status"
                 }
             },
             "required": [],
             "title": "Activity",
             "type": "object"
         },
-        "NamedThing": {
+        "OmicsProcessing": {
             "additionalProperties": false,
-            "description": "A generic grouping for any identifiable entity",
+            "description": "",
             "properties": {
-                "description": {
-                    "description": "A human-readable description for a thing",
-                    "type": "string"
-                },
                 "id": {
-                    "description": "A unique identifier for a thing",
-                    "type": "string"
-                },
-                "name": {
-                    "description": "A human-readable name for a thing",
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
                     "type": "string"
                 }
             },
             "required": [
                 "id"
             ],
-            "title": "NamedThing",
+            "title": "OmicsProcessing",
             "type": "object"
         },
-        "PersonStatus": {
+        "WorkflowExecutionActivity": {
+            "additionalProperties": false,
             "description": "",
-            "enum": [
-                "ALIVE",
-                "DEAD",
-                "UNKNOWN"
+            "properties": {
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id"
             ],
-            "title": "PersonStatus",
-            "type": "string"
+            "title": "WorkflowExecutionActivity",
+            "type": "object"
         }
     },
     "$id": "https://w3id.org/sierra-moxon/nmdc-patterns",
@@ -146,6 +107,9 @@
                 "anyOf": [
                     {
                         "$ref": "#/$defs/Activity__identifier_optional"
+                    },
+                    {
+                        "type": "string"
                     },
                     {
                         "type": "null"

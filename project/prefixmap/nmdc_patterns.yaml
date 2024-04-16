@@ -1,11 +1,14 @@
 {
+   "OBI": "http://purl.obolibrary.org/obo/OBI_",
    "PATO": "http://purl.obolibrary.org/obo/PATO_",
    "biolink": "https://w3id.org/biolink/",
+   "dc": "http://purl.org/dc/elements/1.1/",
    "example": "https://example.org/",
    "linkml": "https://w3id.org/linkml/",
    "nmdc_patterns": "https://w3id.org/sierra-moxon/nmdc-patterns/",
+   "prov": "http://www.w3.org/ns/prov#",
    "schema": "http://schema.org/",
-   "NamedThing": {
-      "@id": "schema:Thing"
+   "PlannedProcess": {
+      "@id": "OBI:0000011"
    }
 }
