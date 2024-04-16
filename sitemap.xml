@@ -91,7 +91,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/PersonStatus/</loc>
+         <loc>https://sierra-moxon.github.io/nmdc-patterns/OmicsProcessing/</loc>
+         <lastmod>2024-04-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/nmdc-patterns/PlannedProcess/</loc>
          <lastmod>2024-04-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -121,17 +126,12 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://sierra-moxon.github.io/nmdc-patterns/WorkflowExecutionActivity/</loc>
+         <lastmod>2024-04-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/about/</loc>
-         <lastmod>2024-04-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/age_in_years/</loc>
-         <lastmod>2024-04-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/birth_date/</loc>
          <lastmod>2024-04-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -161,12 +161,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/primary_email/</loc>
-         <lastmod>2024-04-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/vital_status/</loc>
+         <loc>https://sierra-moxon.github.io/nmdc-patterns/was_informed_by/</loc>
          <lastmod>2024-04-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
