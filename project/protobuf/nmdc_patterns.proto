@@ -4,11 +4,6 @@ message Activity
   uriorcurie id = 0
   activity wasInformedBy = 0
  }
-// A holder for Activity objects
-message ActivityCollection
- {
- repeated  activity entries = 0
- }
 message OmicsProcessing
  {
   uriorcurie id = 0
@@ -17,4 +12,9 @@ message WorkflowExecutionActivity
  {
   activity wasInformedBy = 0
   uriorcurie id = 0
+ }
+// A holder for Activity objects
+message WorkflowExecutionActivityCollection
+ {
+ repeated  workflowExecutionActivity entries = 0
  }

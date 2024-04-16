@@ -4,11 +4,6 @@ type Activity
     wasInformedBy: Activity
   }
 
-type ActivityCollection
-  {
-    entries: [Activity]
-  }
-
 interface NamedThing
   {
     id: Uriorcurie!
@@ -28,5 +23,10 @@ type WorkflowExecutionActivity
   {
     wasInformedBy: Activity
     id: Uriorcurie!
+  }
+
+type WorkflowExecutionActivityCollection
+  {
+    entries: [WorkflowExecutionActivity]
   }
 

@@ -1,5 +1,5 @@
 # Auto generated from nmdc_patterns.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-04-16T16:35:41
+# Generation date: 2024-04-16T16:39:35
 # Schema: nmdc-patterns
 #
 # id: https://w3id.org/sierra-moxon/nmdc-patterns
@@ -68,21 +68,21 @@ class OmicsProcessingId(PlannedProcessId):
 
 
 @dataclass
-class ActivityCollection(YAMLRoot):
+class WorkflowExecutionActivityCollection(YAMLRoot):
     """
     A holder for Activity objects
     """
     _inherited_slots: ClassVar[List[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = NMDC_PATTERNS["ActivityCollection"]
-    class_class_curie: ClassVar[str] = "nmdc_patterns:ActivityCollection"
-    class_name: ClassVar[str] = "ActivityCollection"
-    class_model_uri: ClassVar[URIRef] = NMDC_PATTERNS.ActivityCollection
+    class_class_uri: ClassVar[URIRef] = NMDC_PATTERNS["WorkflowExecutionActivityCollection"]
+    class_class_curie: ClassVar[str] = "nmdc_patterns:WorkflowExecutionActivityCollection"
+    class_name: ClassVar[str] = "WorkflowExecutionActivityCollection"
+    class_model_uri: ClassVar[URIRef] = NMDC_PATTERNS.WorkflowExecutionActivityCollection
 
-    entries: Optional[Union[Dict[Union[str, ActivityId], Union[dict, "Activity"]], List[Union[dict, "Activity"]]]] = empty_dict()
+    entries: Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, "WorkflowExecutionActivity"]], List[Union[dict, "WorkflowExecutionActivity"]]]] = empty_dict()
 
     def __post_init__(self, *_: List[str], **kwargs: Dict[str, Any]):
-        self._normalize_inlined_as_dict(slot_name="entries", slot_type=Activity, key_name="id", keyed=True)
+        self._normalize_inlined_as_dict(slot_name="entries", slot_type=WorkflowExecutionActivity, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -209,8 +209,8 @@ slots.description = Slot(uri=SCHEMA.description, name="description", curie=SCHEM
 slots.was_informed_by = Slot(uri=NMDC_PATTERNS.was_informed_by, name="was_informed_by", curie=NMDC_PATTERNS.curie('was_informed_by'),
                    model_uri=NMDC_PATTERNS.was_informed_by, domain=Activity, range=Optional[Union[str, ActivityId]], mappings = [PROV["wasInformedBy"]])
 
-slots.activityCollection__entries = Slot(uri=NMDC_PATTERNS.entries, name="activityCollection__entries", curie=NMDC_PATTERNS.curie('entries'),
-                   model_uri=NMDC_PATTERNS.activityCollection__entries, domain=None, range=Optional[Union[Dict[Union[str, ActivityId], Union[dict, Activity]], List[Union[dict, Activity]]]])
+slots.workflowExecutionActivityCollection__entries = Slot(uri=NMDC_PATTERNS.entries, name="workflowExecutionActivityCollection__entries", curie=NMDC_PATTERNS.curie('entries'),
+                   model_uri=NMDC_PATTERNS.workflowExecutionActivityCollection__entries, domain=None, range=Optional[Union[Dict[Union[str, WorkflowExecutionActivityId], Union[dict, WorkflowExecutionActivity]], List[Union[dict, WorkflowExecutionActivity]]]])
 
 slots.WorkflowExecutionActivity_id = Slot(uri=NMDC_PATTERNS.id, name="WorkflowExecutionActivity_id", curie=NMDC_PATTERNS.curie('id'),
                    model_uri=NMDC_PATTERNS.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId],

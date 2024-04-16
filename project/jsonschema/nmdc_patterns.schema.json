@@ -19,47 +19,6 @@
             "title": "Activity",
             "type": "object"
         },
-        "ActivityCollection": {
-            "additionalProperties": false,
-            "description": "A holder for Activity objects",
-            "properties": {
-                "entries": {
-                    "additionalProperties": {
-                        "anyOf": [
-                            {
-                                "$ref": "#/$defs/Activity__identifier_optional"
-                            },
-                            {
-                                "type": "string"
-                            },
-                            {
-                                "type": "null"
-                            }
-                        ]
-                    },
-                    "type": "object"
-                }
-            },
-            "title": "ActivityCollection",
-            "type": "object"
-        },
-        "Activity__identifier_optional": {
-            "additionalProperties": false,
-            "description": "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities.",
-            "properties": {
-                "id": {
-                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
-                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-                    "type": "string"
-                },
-                "was_informed_by": {
-                    "type": "string"
-                }
-            },
-            "required": [],
-            "title": "Activity",
-            "type": "object"
-        },
         "OmicsProcessing": {
             "additionalProperties": false,
             "description": "",
@@ -94,6 +53,47 @@
             ],
             "title": "WorkflowExecutionActivity",
             "type": "object"
+        },
+        "WorkflowExecutionActivityCollection": {
+            "additionalProperties": false,
+            "description": "A holder for Activity objects",
+            "properties": {
+                "entries": {
+                    "additionalProperties": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/$defs/WorkflowExecutionActivity__identifier_optional"
+                            },
+                            {
+                                "type": "string"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "type": "object"
+                }
+            },
+            "title": "WorkflowExecutionActivityCollection",
+            "type": "object"
+        },
+        "WorkflowExecutionActivity__identifier_optional": {
+            "additionalProperties": false,
+            "description": "",
+            "properties": {
+                "id": {
+                    "description": "A unique identifier for a thing. Must be either a CURIE shorthand for a URI or a complete URI",
+                    "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+                    "type": "string"
+                },
+                "was_informed_by": {
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "title": "WorkflowExecutionActivity",
+            "type": "object"
         }
     },
     "$id": "https://w3id.org/sierra-moxon/nmdc-patterns",
@@ -106,7 +106,7 @@
             "additionalProperties": {
                 "anyOf": [
                     {
-                        "$ref": "#/$defs/Activity__identifier_optional"
+                        "$ref": "#/$defs/WorkflowExecutionActivity__identifier_optional"
                     },
                     {
                         "type": "string"

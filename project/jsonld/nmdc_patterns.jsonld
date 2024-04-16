@@ -432,16 +432,16 @@
       "@type": "SlotDefinition"
     },
     {
-      "name": "activityCollection__entries",
+      "name": "workflowExecutionActivityCollection__entries",
       "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
       "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/entries",
       "multivalued": true,
       "alias": "entries",
-      "owner": "ActivityCollection",
+      "owner": "WorkflowExecutionActivityCollection",
       "domain_of": [
-        "ActivityCollection"
+        "WorkflowExecutionActivityCollection"
       ],
-      "range": "Activity",
+      "range": "WorkflowExecutionActivity",
       "inlined": true,
       "@type": "SlotDefinition"
     },
@@ -565,24 +565,24 @@
   ],
   "classes": [
     {
-      "name": "ActivityCollection",
-      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/ActivityCollection",
+      "name": "WorkflowExecutionActivityCollection",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/WorkflowExecutionActivityCollection",
       "description": "A holder for Activity objects",
       "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
       "slots": [
-        "activityCollection__entries"
+        "workflowExecutionActivityCollection__entries"
       ],
       "slot_usage": {},
       "attributes": [
         {
           "name": "entries",
           "multivalued": true,
-          "range": "Activity",
+          "range": "WorkflowExecutionActivity",
           "inlined": true,
           "@type": "SlotDefinition"
         }
       ],
-      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/ActivityCollection",
+      "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/WorkflowExecutionActivityCollection",
       "tree_root": true,
       "@type": "ClassDefinition"
     },
@@ -659,9 +659,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "nmdc_patterns.yaml",
-  "source_file_date": "2024-04-16T16:35:38",
-  "source_file_size": 3432,
-  "generation_date": "2024-04-16T16:35:40",
+  "source_file_date": "2024-04-16T16:39:32",
+  "source_file_size": 3466,
+  "generation_date": "2024-04-16T16:39:35",
   "settings": [
     {
       "setting_key": "id_nmdc_prefix",

@@ -50,12 +50,6 @@ linkml:Sparqlpath xsd:string
     } OR @<WorkflowExecutionActivity>
 )
 
-<ActivityCollection> CLOSED {
-    (  $<ActivityCollection_tes> <entries> @<Activity> * ;
-       rdf:type [ <ActivityCollection> ] ?
-    )
-}
-
 <NamedThing>  (
     {
        (  $<NamedThing_tes> rdf:type . * ;
@@ -87,6 +81,12 @@ linkml:Sparqlpath xsd:string
           rdf:type [ <Activity> ] ?
        ) ;
        rdf:type [ <WorkflowExecutionActivity> ]
+    )
+}
+
+<WorkflowExecutionActivityCollection> CLOSED {
+    (  $<WorkflowExecutionActivityCollection_tes> <entries> @<WorkflowExecutionActivity> * ;
+       rdf:type [ <WorkflowExecutionActivityCollection> ] ?
     )
 }
 
