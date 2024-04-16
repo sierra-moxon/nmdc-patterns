@@ -11,11 +11,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://sierra-moxon.github.io/nmdc-patterns/ActivityCollection/</loc>
-         <lastmod>2024-04-16</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Boolean/</loc>
          <lastmod>2024-04-16</lastmod>
          <changefreq>daily</changefreq>
@@ -127,6 +122,11 @@
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/WorkflowExecutionActivity/</loc>
+         <lastmod>2024-04-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://sierra-moxon.github.io/nmdc-patterns/WorkflowExecutionActivityCollection/</loc>
          <lastmod>2024-04-16</lastmod>
          <changefreq>daily</changefreq>
     </url>
