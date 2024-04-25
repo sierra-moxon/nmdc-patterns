@@ -13,13 +13,13 @@ nmdc_patterns:OmicsProcessing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "OmicsProcessing" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:allValuesFrom linkml:String ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
-            owl:minCardinality 1 ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         nmdc_patterns:PlannedProcess ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
@@ -52,13 +52,13 @@ nmdc_patterns:NamedThing a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "NamedThing" ;
     rdfs:subClassOf [ a owl:Restriction ;
+            owl:minCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Uriorcurie [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
                                 owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
-            owl:onProperty nmdc_patterns:id ],
-        [ a owl:Restriction ;
-            owl:minCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:maxCardinality 1 ;
@@ -77,13 +77,15 @@ nmdc_patterns:WorkflowExecutionActivity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "WorkflowExecutionActivity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:allValuesFrom linkml:String ;
+            owl:maxCardinality 1 ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:allValuesFrom [ a rdfs:Datatype ;
+                    owl:onDatatype xsd:string ;
+                    owl:withRestrictions ( [ xsd:pattern "^nmdc:wf-[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:minCardinality 1 ;
-            owl:onProperty nmdc_patterns:id ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         nmdc_patterns:Activity ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> .
@@ -105,25 +107,25 @@ nmdc_patterns:Activity a owl:Class,
         linkml:ClassDefinition ;
     rdfs:label "Activity" ;
     rdfs:subClassOf [ a owl:Restriction ;
-            owl:minCardinality 1 ;
-            owl:onProperty nmdc_patterns:id ],
+            owl:allValuesFrom nmdc_patterns:Activity ;
+            owl:onProperty nmdc_patterns:was_informed_by ],
         [ a owl:Restriction ;
             owl:allValuesFrom [ a rdfs:Datatype ;
                     owl:intersectionOf ( linkml:Uriorcurie [ a rdfs:Datatype ;
                                 owl:onDatatype xsd:string ;
-                                owl:withRestrictions ( [ xsd:pattern "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
+                                owl:withRestrictions ( [ xsd:pattern "^nmdc:act-[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$" ] ) ] ) ] ;
+            owl:onProperty nmdc_patterns:id ],
+        [ a owl:Restriction ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
             owl:minCardinality 0 ;
             owl:onProperty nmdc_patterns:was_informed_by ],
         [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
-            owl:onProperty nmdc_patterns:was_informed_by ],
-        [ a owl:Restriction ;
-            owl:maxCardinality 1 ;
+            owl:minCardinality 1 ;
             owl:onProperty nmdc_patterns:id ],
         [ a owl:Restriction ;
-            owl:allValuesFrom nmdc_patterns:Activity ;
+            owl:maxCardinality 1 ;
             owl:onProperty nmdc_patterns:was_informed_by ] ;
     skos:definition "Something that occurs over a period of time and acts upon or with entities; it may include consuming, processing, transforming, modifying, relocating, using, or generating entities." ;
     skos:inScheme <https://w3id.org/sierra-moxon/nmdc-patterns> ;

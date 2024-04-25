@@ -1,5 +1,5 @@
 # Auto generated from nmdc_patterns.yaml by pythongen.py version: 0.0.1
-# Generation date: 2024-04-16T16:39:35
+# Generation date: 2024-04-16T17:25:37
 # Schema: nmdc-patterns
 #
 # id: https://w3id.org/sierra-moxon/nmdc-patterns
@@ -33,8 +33,6 @@ dataclasses._init_fn = dataclasses_init_fn_with_kwargs
 
 # Namespaces
 OBI = CurieNamespace('OBI', 'http://purl.obolibrary.org/obo/OBI_')
-PATO = CurieNamespace('PATO', 'http://purl.obolibrary.org/obo/PATO_')
-BIOLINK = CurieNamespace('biolink', 'https://w3id.org/biolink/')
 DC = CurieNamespace('dc', 'http://purl.org/dc/elements/1.1/')
 EXAMPLE = CurieNamespace('example', 'https://example.org/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
@@ -214,11 +212,15 @@ slots.workflowExecutionActivityCollection__entries = Slot(uri=NMDC_PATTERNS.entr
 
 slots.WorkflowExecutionActivity_id = Slot(uri=NMDC_PATTERNS.id, name="WorkflowExecutionActivity_id", curie=NMDC_PATTERNS.curie('id'),
                    model_uri=NMDC_PATTERNS.WorkflowExecutionActivity_id, domain=WorkflowExecutionActivity, range=Union[str, WorkflowExecutionActivityId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^nmdc:wf-[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.Activity_id = Slot(uri=NMDC_PATTERNS.id, name="Activity_id", curie=NMDC_PATTERNS.curie('id'),
                    model_uri=NMDC_PATTERNS.Activity_id, domain=Activity, range=Union[str, ActivityId],
-                   pattern=re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+                   pattern=re.compile(r'^nmdc:act-[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
+
+slots.Activity_was_informed_by = Slot(uri=NMDC_PATTERNS.was_informed_by, name="Activity_was_informed_by", curie=NMDC_PATTERNS.curie('was_informed_by'),
+                   model_uri=NMDC_PATTERNS.Activity_was_informed_by, domain=Activity, range=Optional[Union[str, ActivityId]], mappings = [PROV["wasInformedBy"]],
+                   pattern=re.compile(r'^nmdc:act-[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'))
 
 slots.OmicsProcessing_id = Slot(uri=NMDC_PATTERNS.id, name="OmicsProcessing_id", curie=NMDC_PATTERNS.curie('id'),
                    model_uri=NMDC_PATTERNS.OmicsProcessing_id, domain=OmicsProcessing, range=Union[str, OmicsProcessingId],

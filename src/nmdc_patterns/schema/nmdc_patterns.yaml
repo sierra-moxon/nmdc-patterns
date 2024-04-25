@@ -37,12 +37,7 @@ classes:
 
   WorkflowExecutionActivity:
     is_a: Activity
-    slot_usage:
-      id:
-        required: true
-        structured_pattern:
-          syntax: "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}"
-          interpolated: true
+
 
   Activity:
     description: Something that occurs over a period of time and acts upon or with entities; 
@@ -73,7 +68,6 @@ classes:
     class_uri: OBI:0000011
     is_a: NamedThing
 
-
   NamedThing:
     description: "a databased entity or concept/class"
     abstract: true
@@ -103,7 +97,7 @@ slots:
       - 'typecodes must correspond 1:1 to a class in the NMDC schema. this will be checked via per-class id slot usage assertions'
       - 'minting authority shoulders should probably be enumerated and checked in the pattern'
     examples:
-      - value: nmdc:mgmag-00-x012.1_7_c1
+      - value: nmdc:act6-00-x012.1_7_c1
         description: 'https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248'
     pattern: '^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$'
   name:

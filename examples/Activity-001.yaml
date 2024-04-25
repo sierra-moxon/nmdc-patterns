@@ -1,7 +1,12 @@
 # Example data object
 ---
 entries:
-  - id: nmdc:wf-00-x012.1_7_c1
-    name: foo bar
-    primary_email: foo.bar@example.com
-    age_in_years: 33
+  entry1:
+    id: nmdc:wf-00-x012.1_7_c2
+    was_informed_by: nmdc:omcsp-00-x012.1_7_c1
+  entry2:
+    id: nmdc:wf-00-x012.1_7_c3
+    was_informed_by: nmdc:act-00-x012.1_7_c2
+  entry3:
+    id: nmdc:wfz-00-x012.1_7_c3
+    was_informed_by: nmdc:act-00-x012.1_7_c2

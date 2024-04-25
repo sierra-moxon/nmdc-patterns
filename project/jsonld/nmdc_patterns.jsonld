@@ -20,16 +20,8 @@
       "prefix_reference": "https://w3id.org/linkml/"
     },
     {
-      "prefix_prefix": "biolink",
-      "prefix_reference": "https://w3id.org/biolink/"
-    },
-    {
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
-    },
-    {
-      "prefix_prefix": "PATO",
-      "prefix_reference": "http://purl.obolibrary.org/obo/PATO_"
     },
     {
       "prefix_prefix": "example",
@@ -373,7 +365,7 @@
       ],
       "examples": [
         {
-          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "value": "nmdc:act6-00-x012.1_7_c1",
           "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
           "@type": "Example"
         }
@@ -457,7 +449,7 @@
       ],
       "examples": [
         {
-          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "value": "nmdc:act6-00-x012.1_7_c1",
           "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
           "@type": "Example"
         }
@@ -476,12 +468,7 @@
       "usage_slot_name": "id",
       "range": "uriorcurie",
       "required": true,
-      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-      "structured_pattern": {
-        "syntax": "{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}",
-        "interpolated": true,
-        "@type": "PatternExpression"
-      },
+      "pattern": "^nmdc:wf-[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
       "@type": "SlotDefinition"
     },
     {
@@ -496,7 +483,7 @@
       ],
       "examples": [
         {
-          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "value": "nmdc:act6-00-x012.1_7_c1",
           "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
           "@type": "Example"
         }
@@ -515,12 +502,28 @@
       "usage_slot_name": "id",
       "range": "uriorcurie",
       "required": true,
-      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_\\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
-      "structured_pattern": {
-        "syntax": "{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}",
-        "interpolated": true,
-        "@type": "PatternExpression"
-      },
+      "pattern": "^nmdc:act-[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
+      "@type": "SlotDefinition"
+    },
+    {
+      "name": "Activity_was_informed_by",
+      "definition_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/was_informed_by",
+      "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
+      "mappings": [
+        "http://www.w3.org/ns/prov#wasInformedBy"
+      ],
+      "is_a": "was_informed_by",
+      "domain": "Activity",
+      "slot_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/was_informed_by",
+      "alias": "was_informed_by",
+      "owner": "Activity",
+      "domain_of": [
+        "Activity"
+      ],
+      "is_usage_slot": true,
+      "usage_slot_name": "was_informed_by",
+      "range": "Activity",
+      "pattern": "^nmdc:act-[a-zA-Z0-9_][a-zA-Z0-9_\\-\\/\\.,]*$",
       "@type": "SlotDefinition"
     },
     {
@@ -535,7 +538,7 @@
       ],
       "examples": [
         {
-          "value": "nmdc:mgmag-00-x012.1_7_c1",
+          "value": "nmdc:act6-00-x012.1_7_c1",
           "description": "https://github.com/microbiomedata/nmdc-schema/pull/499#discussion_r1018499248",
           "@type": "Example"
         }
@@ -592,7 +595,7 @@
       "from_schema": "https://w3id.org/sierra-moxon/nmdc-patterns",
       "is_a": "Activity",
       "slots": [
-        "was_informed_by",
+        "Activity_was_informed_by",
         "WorkflowExecutionActivity_id"
       ],
       "slot_usage": {},
@@ -609,7 +612,7 @@
       ],
       "slots": [
         "Activity_id",
-        "was_informed_by"
+        "Activity_was_informed_by"
       ],
       "slot_usage": {},
       "class_uri": "https://w3id.org/sierra-moxon/nmdc-patterns/Activity",
@@ -659,9 +662,9 @@
   ],
   "metamodel_version": "1.7.0",
   "source_file": "nmdc_patterns.yaml",
-  "source_file_date": "2024-04-16T16:39:32",
-  "source_file_size": 3466,
-  "generation_date": "2024-04-16T16:39:35",
+  "source_file_date": "2024-04-16T17:25:33",
+  "source_file_size": 3326,
+  "generation_date": "2024-04-16T17:25:37",
   "settings": [
     {
       "setting_key": "id_nmdc_prefix",
