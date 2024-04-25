@@ -300,16 +300,6 @@
 <pre><code class="language-yaml">name: WorkflowExecutionActivity
 from_schema: https://w3id.org/sierra-moxon/nmdc-patterns
 is_a: Activity
-slot_usage:
-  id:
-    name: id
-    domain_of:
-    - Activity
-    - NamedThing
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
-      interpolated: true
 
 </code></pre>
 </details>
@@ -318,16 +308,6 @@ slot_usage:
 <pre><code class="language-yaml">name: WorkflowExecutionActivity
 from_schema: https://w3id.org/sierra-moxon/nmdc-patterns
 is_a: Activity
-slot_usage:
-  id:
-    name: id
-    domain_of:
-    - Activity
-    - NamedThing
-    required: true
-    structured_pattern:
-      syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
-      interpolated: true
 attributes:
   id:
     name: id
@@ -345,7 +325,7 @@ attributes:
     required: true
     pattern: ^[a-zA-Z0-9][a-zA-Z0-9_\.]+:[a-zA-Z0-9_][a-zA-Z0-9_\-\/\.,]*$
     structured_pattern:
-      syntax: '{id_nmdc_prefix}:wf-{id_shoulder}-{id_blade}{id_version}{id_locus}'
+      syntax: '{id_nmdc_prefix}:act-{id_shoulder}-{id_blade}{id_version}{id_locus}'
       interpolated: true
   was_informed_by:
     name: was_informed_by

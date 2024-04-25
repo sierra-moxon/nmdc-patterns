@@ -2,167 +2,167 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Activity/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Boolean/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Curie/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Date/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/DateOrDatetime/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Datetime/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Decimal/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Double/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Float/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Integer/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Jsonpath/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Jsonpointer/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/NamedThing/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Ncname/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Nodeidentifier/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Objectidentifier/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/OmicsProcessing/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/PlannedProcess/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Sparqlpath/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/String/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Time/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Uri/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/Uriorcurie/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/WorkflowExecutionActivity/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/WorkflowExecutionActivityCollection/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/about/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/description/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/entries/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/id/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/name/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/nmdc-patterns/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
          <loc>https://sierra-moxon.github.io/nmdc-patterns/was_informed_by/</loc>
-         <lastmod>2024-04-16</lastmod>
+         <lastmod>2024-04-25</lastmod>
          <changefreq>daily</changefreq>
     </url>
 </urlset>
